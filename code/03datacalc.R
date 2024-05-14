@@ -29,11 +29,20 @@ hi <- (hs_avg - 0.3 * hs_stdv) * ts_avg * sqrt(9.8 / (5000 * gsize_avg))
 
 ## profile closure depth: 11.094 meters
 hc <- (2 * hs_avg + 11 * hs_stdv)
+save(hc, file = "data/cleandata/profileclosuredepth.Rdata")
 
 
 # shoreline retreat forecast
 
-##
+## data points
+sea_rise_100 <- 0.77 # rcp 8.5 2100
+sea_rise_50 <- 0.40
+cshore_length <- 1375
+berm_height <- 3
 
-retreat <- sea_rise * (cshore_length / )
+retreat_100 <- sea_rise_100 * (cshore_length / (berm_height + hc))
+## 75.119
+retreat_50 <- sea_rise_50 * (cshore_length / (berm_height + hc))
+## 39.023
+
 

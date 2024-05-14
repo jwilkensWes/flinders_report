@@ -12,9 +12,15 @@ ggplot(flshore, aes(year, `distance (m)`)) +
 
 # shoreline profile
 load("data/cleandata/flprofile.Rdata")
+load("data/cleandata/profileclosuredepth.Rdata")
 
 ggplot(flprofile, aes(distance, elevation)) +
-  geom_line()
+  geom_line() +
+  geom_point() +
+  geom_hline(yintercept = (-(hc)), linetype = "dashed", color = "red") +
+  geom_vline(xintercept = 1375, linetype = "dashed", color = "red")
+## cross shore profile is 1375 meters
+  
 
 # wave climate
 load("data/cleandata/flwave.Rdata")
