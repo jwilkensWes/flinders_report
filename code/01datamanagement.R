@@ -42,4 +42,15 @@ flwave <- flwave %>% mutate(compass = case_when(
 save(flwave, file = "data/cleandata/flwave.Rdata")
 
 
+# grain size data
+flgrain <- read_csv("data/rawdata/MARS_Grain_size_distribution_20240514_120409.csv")
 
+## rename columns correctly
+gnames <- as.character(flgrain[1,])
+flgrain <- flgrain %>% slice(-1)
+colnames(flgrain) <- gnames
+
+## cleaning
+keep_columns <- c("SURVEY ID", "SAMPLE NO", "SAMPLE TYPE", "SAMPLE COMMENTS", 
+                  "WATER DEPTH", "PROPERTY", "QUALIFIER", "NUM VALUE", "UOM", "COMMENTS")
+flgrain <- flgrain[, keep_columns]
