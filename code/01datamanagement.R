@@ -54,3 +54,8 @@ colnames(flgrain) <- gnames
 keep_columns <- c("SURVEY ID", "SAMPLE NO", "SAMPLE TYPE", "SAMPLE COMMENTS", 
                   "WATER DEPTH", "PROPERTY", "QUALIFIER", "NUM VALUE", "UOM", "COMMENTS")
 flgrain <- flgrain[, keep_columns]
+flgrain <- flgrain %>% filter(startsWith(flgrain$QUALIFIER, "geometric mean"))
+flgrain$numval <- as.numeric(flgrain$`NUM VALUE`)
+
+## save
+save(flgrain, file = "data/cleandata/flgrain.Rdata")
