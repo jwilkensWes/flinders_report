@@ -36,13 +36,13 @@ save(hc, file = "data/cleandata/profileclosuredepth.Rdata")
 
 ## data points
 sea_rise_100 <- 0.77 # rcp 8.5 2100
-sea_rise_50 <- 0.40
+sea_rise_50 <- 0.40 # rcp 8.5 2050
 cshore_length <- 1375
-berm_height <- 3
+berm_height <- 3.8 # meters
 
 retreat_100 <- sea_rise_100 * (cshore_length / (berm_height + hc))
-## 75.119
+## 71.084
 retreat_50 <- sea_rise_50 * (cshore_length / (berm_height + hc))
-## 39.023
+## 36.927
 
 

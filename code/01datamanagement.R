@@ -4,6 +4,7 @@
 library(readr)
 library(readxl)
 library(dplyr)
+library(lubridate)
 
 # shoreline history from Digital Earth Australia Coastlines
 flshore <- read_csv("data/rawdata/deaflindersbeachhistoricalshoreline.csv")
@@ -37,6 +38,10 @@ flwave <- flwave %>% mutate(compass = case_when(
   dir > 180 & dir < 270 ~ "SW",
   dir > 270 ~ "NW"
 ))
+
+## make year column
+flwave$year <- NULL
+flwave <- flwave %>% mutate(year = year(time))
   
 # save file
 save(flwave, file = "data/cleandata/flwave.Rdata")
